@@ -13,11 +13,13 @@
     margin: 0;
     overflow: hidden;
   }
+
   h1 {
     margin-top: 40px;
     color: #d6336c;
     padding: 0 10px;
   }
+
   button {
     font-size: 20px;
     padding: 12px 30px;
@@ -26,18 +28,21 @@
     cursor: pointer;
     position: absolute;
   }
+
   #yesBtn {
     background: #ff4d6d;
     color: white;
     left: 30%;
     top: 55%;
   }
+
   #noBtn {
     background: #555;
     color: white;
     left: 55%;
     top: 55%;
   }
+
   #message {
     position: absolute;
     top: 70%;
@@ -48,8 +53,14 @@
     font-weight: bold;
     display: none;
   }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
 </style>
 </head>
+
 <body>
 
 <h1 id="question">Nadee my love, are you love me?</h1>
@@ -67,45 +78,45 @@
 
   let stage = 1;
 
+  // YES button click
   yesBtn.onclick = () => {
-    if (stage === 1) {
-      // YES button jumps randomly on first stage
+    if(stage === 1) {
+      // Stage 1 → YES jumps randomly
       yesBtn.style.left = Math.random() * 70 + "%";
       yesBtn.style.top = Math.random() * 70 + "%";
-    } else if (stage === 2) {
-      // Final message after second stage YES click
+    } else if(stage === 2) {
+      // Stage 2 → final dramatic message
       question.style.display = "none";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+
       message.style.display = "block";
-     message.innerHTML = `
-<div style="font-size:26px; line-height:1.6; animation: fadeIn 3s ease-in; color:#d6336c;">
-  🌹 <b>At last…</b> 🌹<br><br>
-
-  Thank God I found you, my one and only 💫❤️<br>
-  Every moment without you felt incomplete… 😢<br><br>
-
-  From the first smile, to the first laugh we shared…<br>
-  I knew deep in my heart 💖 — you are the one for me.<br><br>
-
-  <b>I’ll marry you 💍❤️</b><br>
-  I promise to love you, care for you,<br>
-  and make you the happiest person alive 💞<br><br>
-
-  Love you forever, my darling 😘<br>
-  You are my everything, my reason to smile every day 🌟<br><br>
-
-  <i>Happy Valentine’s Day, my love! 🌹💕</i>
-</div>
+      message.innerHTML = `
+        <div style="font-size:26px; line-height:1.6; animation: fadeIn 3s ease-in; color:#d6336c;">
+          🌹 <b>At last…</b> 🌹<br><br>
+          Thank God I found you, my one and only 💫❤️<br>
+          Every moment without you felt incomplete… 😢<br><br>
+          From the first smile, to the first laugh we shared…<br>
+          I knew deep in my heart 💖 — you are the one for me.<br><br>
+          <b>I’ll marry you 💍❤️</b><br>
+          I promise to love you, care for you,<br>
+          and make you the happiest person alive 💞<br><br>
+          Love you forever, my darling 😘<br>
+          You are my everything, my reason to smile every day 🌟<br><br>
+          <i>Happy Valentine’s Day, my love! 🌹💕</i>
+        </div>
       `;
     }
   };
 
+  // NO button click
   noBtn.onclick = () => {
-    if (stage === 1) {
-      // Show message on NO click first time
+    if(stage === 1) {
+      // Stage 1 → NO shows message
       message.style.display = "block";
       message.innerHTML = "Subhagya, Dobby you are free ❤️";
 
-      // After 5 seconds move to next stage
+      // After 5 sec → move to stage 2
       setTimeout(() => {
         stage = 2;
         message.style.display = "none";
@@ -113,12 +124,11 @@
           Okay I’ll give opportunity, if you don’t love it’s okay.<br>
           At least are you making foods and daily sex?
         `;
-        // YES button fixed position in stage 2
         yesBtn.style.left = "40%";
         yesBtn.style.top = "55%";
       }, 5000);
-    } else if (stage === 2) {
-      // NO button jumps randomly in second stage
+    } else if(stage === 2) {
+      // Stage 2 → NO jumps randomly
       noBtn.style.left = Math.random() * 70 + "%";
       noBtn.style.top = Math.random() * 70 + "%";
     }
@@ -127,5 +137,3 @@
 
 </body>
 </html>
-
-
